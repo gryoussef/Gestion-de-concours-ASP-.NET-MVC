@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Tables - SB Admin</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+        body {
+            font-family: montserrat, arial, verdana;
+            background-color: gainsboro;
+        }
+    </style>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><i class="fas fa-university"></i>Gestion Ensas</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button><!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+
+            </div>
+        </form>
+        <i class="fa fa-bell" style="font-size:20px;color:white;"></i> <span style="color:white;">@RenderSection("Msg", required: false)</span>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+
+                    @Html.ActionLink("Logout", "LogOut", "Admins")
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
+                        </div>
+
+                        <span style="margin-top:40px;margin-bottom:20px;margin-left:15px;"><img src="~/img/admin.jpg" style="border-radius:30px;width:50px;height:50px; margin-right:20px;" />Welcome <p style="margin-left:80px;">@Session["login"]</p></span>
+
+                        <ul class="navbar-nav ml-auto ml-md-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-home"></i> Home</div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                    @Html.ActionLink("Page Home", "Index", "Admins")
+
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="sb-sidenav-menu-heading">Operations</div>
+                       
+
+                        <ul class="navbar-nav ml-auto ml-md-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-edit"></i> 3eme année</div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                    @Html.ActionLink("Enregistrer", "Convoquer", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Recherche", "rechercher", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Recherche corbeil", "rechercherCorbeil", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Présélection", "preselection", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Statistiques des convoqués", "getChartForPreselction3annee", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Correction Génie informatique", "correction", "Admins", new { niveau = "3eme", idfil = "1" }, null)
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Correction Génie industrielle", "correction", "Admins", new { niveau = "3eme", idfil = "4" }, null)
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Correction Génie Telecom", "correction", "Admins", new { niveau = "3eme", idfil = "3" }, null)
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Correction Génie GPMC", "correction", "Admins", new { niveau = "3eme", idfil = "2" }, null)
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("statistique des présents aux concours", "statistique_Des_Presents_3annee", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Délibération", "Deliberation3eme", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Liste d'admission", "ListAdmission3eme", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("statistique des admis en 3 annees", "statistiqueDesAdmis3Annee", "Admins")
+                                </div>
+
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto ml-md-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-edit"></i> 4eme année</div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                    @Html.ActionLink("Enregistrer", "Convoquer4eme", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Recherche", "rechercher4eme", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Recherche corbeil", "rechercherCorbeil4eme", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Présélection", "preselection4eme", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Statistiques des convoqués", "getChartForPreselction4annee", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Correction Génie informatique", "correction", "Admins", new { niveau = "4eme", idfil = "1" }, null)
+                                    <div class="dropdown-divider"></div>
+
+                                    @Html.ActionLink("Correction Génie industrielle", "correction", "Admins", new { niveau = "4eme", idfil = "4" }, null)
+                                    <div class="dropdown-divider"></div>
+
+                                    @Html.ActionLink("Correction Génie Telecom", "correction", "Admins", new { niveau = "4eme", idfil = "3" }, null)
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Correction Gééie GPMC", "correction", "Admins", new { niveau = "4eme", idfil = "2" }, null)
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("statistique des présents aux concours", "statistique_Des_Presents_4annee", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Délibération", "Deliberation4eme", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("Liste d'admission", "ListAdmission4eme", "Admins")
+                                    <div class="dropdown-divider"></div>
+                                    @Html.ActionLink("statistique des admis en 4 annees", "statistiqueDesAdmis4Annee", "Admins")
+
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav ml-auto ml-md-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i> Boite de messages</div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right " aria-labelledby="userDropdown">
+
+                                    @Html.ActionLink("Message Non lue", "Index", "BoitMessages")
+
+                                    <div class="dropdown-divider"> </div>
+                                    @Html.ActionLink("Tou les message Message ", "Index2", "BoitMessages")
+
+
+
+                                </div>
+                        </ul>
+</nav>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/scripts.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/datatables-demo.js"></script>
+</body>
+</html>
+<div style="margin-left:220px;margin-top:100px;">@RenderBody()</div>

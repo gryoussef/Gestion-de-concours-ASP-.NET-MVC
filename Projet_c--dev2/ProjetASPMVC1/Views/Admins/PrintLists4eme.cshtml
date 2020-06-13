@@ -1,0 +1,125 @@
+﻿<head>
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+</head>
+<style>
+    .div-princ {
+        text-align: center;
+    }
+</style>
+
+<div class="div-princ border-bottom-0">
+
+    <br />
+    <span style="font-size:30px; padding-left:50px; color:cornflowerblue;">Écoles Nationales des Sciences Appliquées</span>
+    <br />
+    <br />
+    <br />
+    <p style="font-size:25px">Liste d'admission pour @ViewBag.filiere 4éme année</p>
+    <br />
+    <p style="font-size:15px;">Liste principal</p>
+
+    <table class="table table-striped  table-light" id="dataTable" width="40%" cellspacing="0">
+        <thead>
+            <tr>
+            <tr>
+                <th>
+                    CNE
+                </th>
+                <th>
+                    Prenom
+                </th>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    CNI
+                </th>
+
+                <th>
+                    N° dossier
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @ViewBag.admisPR)
+            {
+                <tr>
+                    <td>
+                        @item.CNE
+                    </td>
+                    <td>
+                        @item.prenom
+                    </td>
+                    <td>
+                        @item.nom
+                    </td>
+                    <td>
+                        @item.CIN
+                    </td>
+
+                    <td>
+                        @item.n_dossier
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <br />
+    <p style="font-size:15px">Liste d'attente</p>
+    <br />
+    <table class="table table-striped   table-light" id="dataTable" width="40%" cellspacing="0">
+        <thead>
+            <tr>
+            <tr>
+                <th>
+                    CNE
+                </th>
+                <th>
+                    Prenom
+                </th>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    CNI
+                </th>
+
+                <th>
+                    N° dossier
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @ViewBag.admisATT)
+            {
+                <tr>
+                    <td>
+                        @item.CNE
+                    </td>
+                    <td>
+                        @item.prenom
+                    </td>
+                    <td>
+                        @item.nom
+                    </td>
+                    <td>
+                        @item.CIN
+                    </td>
+
+                    <td>
+                        @item.n_dossier
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+
+</div>
